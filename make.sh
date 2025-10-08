@@ -91,7 +91,7 @@ mkdir -p "$BUILD_DIR"
 echo "[*] scanning features..."
 FEATURE_LIST_FILE=$BUILD_DIR/features.json
 rm -f "${FEATURE_LIST_FILE:?}" || true
-./src/scan.features.rb \
+ruby ./src/scan.features.rb \
     -o "$FEATURE_LIST_FILE" \
     -f "$GITLAB_SOURCE_CODE_DIR/features.rb"
 
@@ -102,7 +102,7 @@ cp -f ./keys/public.key "$PUBLIC_KEY_FILE"
 cp -f ./keys/private.key "$PRIVATE_KEY_FILE"
 
 # execute following command to generate new keys
-# ./src/generator.keys.rb \
+# ruby ./src/generator.keys.rb \
 #     --public-key $PUBLIC_KEY_FILE \
 #     --private-key $PRIVATE_KEY_FILE
 
@@ -110,7 +110,7 @@ echo "[*] generating license..."
 LICENSE_FILE=$BUILD_DIR/result.gitlab-license
 LICENSE_JSON_FILE=$BUILD_DIR/license.json
 
-./src/generator.license.rb \
+ruby ./src/generator.license.rb \
     -f "$FEATURE_LIST_FILE" \
     --public-key "$PUBLIC_KEY_FILE" \
     --private-key "$PRIVATE_KEY_FILE" \
