@@ -12,4 +12,5 @@ ENV LICENSE_PLAN="ultimate"
 ENV LICENSE_USER_COUNT="2147483647"
 ENV LICENSE_EXPIRE_YEAR="2500"
 
+RUN chmod +x ./make.sh
 CMD [ "./make.sh" ]
